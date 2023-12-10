@@ -1,21 +1,16 @@
 if __name__ == '__main__':
-    TARGET = {
-        'red': 12,
-        'green': 13,
-        'blue': 14,
-    }
-    COLORS = TARGET.keys()
-    validRounds = []
+    working_dir = __file__.split('/')[:-1]
 
-    with open('day2/input.txt', 'r') as file:
+    filename = '/'.join(working_dir) + '/input.txt'
+    with open(filename, 'r') as file:
         power = 0
         get_count = lambda x: int(x.strip().split(' ')[0])
         get_color = lambda x: x.strip().split(' ')[1]
         for line in file:
-            gameAndRounds = line.strip().split(':')
-            gameId = int(gameAndRounds[0].replace('Game ', ''))
+            game_and_rounds = line.strip().split(':')
+            game_id = int(game_and_rounds[0].replace('Game ', ''))
 
-            rounds = gameAndRounds[1].split(';')
+            rounds = game_and_rounds[1].split(';')
             red = blue = green = int(0)
             for round in rounds:
                 for dice in round.strip().split(','):
@@ -29,9 +24,8 @@ if __name__ == '__main__':
                             green = max(green, count)
                         case 'blue':
                             blue = max(blue, count)
-            roundPower = red * green * blue
-            print(f'red={red};green={green};blue={blue};power={roundPower}')
-            power += roundPower
+            round_power = red * green * blue
+            print(f'red={red};green={green};blue={blue};power={round_power}')
+            power += round_power
 
         print(power)
-
