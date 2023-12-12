@@ -1,4 +1,3 @@
-
 if __name__ == '__main__':
     working_dir = "/".join(__file__.split('/')[:-1])
     filename = 'input.txt'
@@ -19,5 +18,3 @@ if __name__ == '__main__':
             print(f'Card {i + 1} score: {card_score} ({match_count})')
 
         print(total)
-
-                        
